@@ -9,10 +9,10 @@ namespace Tasker
     public class ApplicationDbContext : DbContext
     {
         public DbSet<Task> Tasks { get; set; }
-        ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
+
+        public ApplicationDbContext(DbContextOptions options) : base(options)
         {
 
         }
-        
     }
 }
