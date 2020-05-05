@@ -9,14 +9,22 @@ namespace Tasker.Pages
 {
     public class CreateTaskModel : PageModel
     {
+        private ApplicationDbContext _context;
+
         [BindProperty]
         public Task NewTask { get; set; }
+        CreateTaskModel(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         public void OnGet()
         {
 
         }
         public IActionResult OnPost()
         {
+            _context.Tasks.Add(NewTask);
+            _context.SaveChanges();
             return Redirect("Index");
         }
     }
